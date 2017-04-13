@@ -4,6 +4,8 @@ import datetime as dt
 
 # defining constants
 url = "http://judis.nic.in/supremecourt/imgst.aspx?filename="
+# number of files in each folder
+folder_count=1000
 
 # calls url, parses html and stores data in a text file
 def store(count, file_path):
@@ -33,7 +35,7 @@ def store(count, file_path):
 
 # check and create folder if necessary and returns file path where text file is to be stored
 def create_folder(name):
-    new_name = str((name-1)/20*20+1)+"-"+str((name-1)/20*20+20)
+    new_name = str((name-1)/folder_count*folder_count+1)+"-"+str((name-1)/folder_count*folder_count+folder_count)
     if not os.path.isdir(os.path.join(path, new_name)):
         try:
             os.makedirs(os.path.join(path, new_name))
